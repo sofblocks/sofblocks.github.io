@@ -97,7 +97,7 @@ author:
   avatar           : "/assets/images/bio-photo.png" # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
   bio              : "Cyber Security|Sys Admin."
   location         : "Africa"
-  email            :
+  email            : "sofblocks@gmail.com"
   links:
     - label: "Email"
       icon: "fas fa-fw fa-envelope-square"
