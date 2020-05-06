@@ -122,8 +122,6 @@ author:
 
 # Site Footer
 footer:
-  twitter          : "sofblocks"
-  github           : "sofblocks"
   links:
     - label: "Twitter"
       icon: "fab fa-fw fa-twitter-square"
