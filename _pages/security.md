@@ -14,4 +14,4 @@ author_profile: true
   {% for post in posts %}
     {% include archive-single.html %}
   {% endfor %}
-{% endfor %}
+{% endfor %} 
