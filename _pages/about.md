@@ -4,4 +4,4 @@ permalink: "/about/"
 author_profile: true
 ---
 
-▪ Cyber Security  | IT & SysAdmin |
+Cyber Security  | IT & SysAdmin |
