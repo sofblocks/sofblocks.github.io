@@ -30,7 +30,7 @@ masthead_title           : "Software Blocks | Security Blog " # overrides the we
 # breadcrumbs            : false # true, false (default)
 words_per_minute         : 200
 comments:
-  provider               : # false (default), "disqus", "discourse", "facebook", "staticman", "staticman_v2", "utterances", "custom"
+  provider               : "disqus" # false (default), "disqus", "discourse", "facebook", "staticman", "staticman_v2", "utterances", "custom"
   disqus:
     shortname            : https-sofblocks-github-io # https://help.disqus.com/customer/portal/articles/466208-what-s-a-shortname-
   discourse:
