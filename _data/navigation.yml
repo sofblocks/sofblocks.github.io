@@ -2,6 +2,8 @@
 main:
   - title: "Posts"
     url: /security/
+    - title: "Notes"
+    url: /notes/
   - title: "About"
     url: /about/
   # - title: "About"
