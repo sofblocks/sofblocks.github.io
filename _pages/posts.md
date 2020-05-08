@@ -1,6 +1,6 @@
 ---
 layout: posts
-title: "Security"
-permalink: "/security/"
+title: "posts"
+permalink: "/posts/"
 author_profile: true
 ---
