@@ -4,6 +4,8 @@ main:
     url: /security/
   - title: "Notes"
     url: /notes/
+  - title: "Resources"
+    url: /resources/
   - title: "About"
     url: /about/
   # - title: "About"
