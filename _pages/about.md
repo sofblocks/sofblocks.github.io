@@ -2,6 +2,8 @@
 title: "About"
 permalink: "/about/"
 author_profile: true
+toc: true
+toc_label: "Unique Tile"
 ---
 
 > Sysadmin|Penetration Tester|Infosec perpetual learner.
