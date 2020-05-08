@@ -2,7 +2,7 @@
 main:
   - title: "Posts"
     url: /security/
-    - title: "Notes"
+  - title: "Notes"
     url: /notes/
   - title: "About"
     url: /about/
