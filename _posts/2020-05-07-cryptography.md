@@ -10,6 +10,7 @@ tags:
  - encryption
 comments: true
 published: true
+class: "wide"
 ---
 {% include toc title="Table of content" %}
 
