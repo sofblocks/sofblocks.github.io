@@ -2,6 +2,7 @@
 layout: archive
 title: "Cryptography"
 date: 2020-05-07
+excerpt: "`Cryptography` is the science of secret writing with the intention of keeping the data secret."
 tags:
  - cryptography
  - kerberos
@@ -10,6 +11,7 @@ tags:
 comments: true
 published: true
 ---
+{% include toc title="Table of content" %}
 
 ## What is Kerberos?
 
