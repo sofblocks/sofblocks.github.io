@@ -10,7 +10,6 @@ tags:
 comments: true
 published: true
 ---
-{% include toc title="Table of content" %}
 
 ## What is Kerberos?
 
