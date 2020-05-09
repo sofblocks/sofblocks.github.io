@@ -5,5 +5,5 @@ permalink: "/notes/"
 author_profile: true
 ---
 {% for post in site.notes %}
-  {% include notes-list.html %}
+  {% include posts-list.html %}
 {% endfor %}
