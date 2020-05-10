@@ -6,13 +6,11 @@ excerpt: "`Cryptography` is the science of secret writing with the intention of 
 tags:
  - cryptography
  - kerberos
- - hashing
  - encryption
 comments: true
 published: true
 class: "wide"
 ---
-{% include toc title="Table of content" %}
 
 ## What is Kerberos?
 
