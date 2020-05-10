@@ -7,7 +7,6 @@ tags:
  - kerberos
  - encryption
 toc: true
-toc_sticky: true
 classes: wide
 last_modified_at: 2020-05-10
 ---
