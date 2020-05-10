@@ -9,7 +9,6 @@ tags:
  - encryption
 comments: true
 published: true
-class: "wide"
 ---
 
 ## What is Kerberos?
