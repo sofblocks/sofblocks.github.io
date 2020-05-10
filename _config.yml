@@ -247,13 +247,25 @@ category_archive:
 tag_archive:
   type: liquid
   path: /tags/
+  
+# Collections
+collections:
+  notes:
+    output: true
+    permalink: /:collection/:path/
+
+
+
+
+
+
 # https://github.com/jekyll/jekyll-archives
 # jekyll-archives:
 #   enabled:
 #     - categories
 #     - tags
 #   layouts:
-#     category: archive-taxonomy
+#     category: archive-taxonomys
 #     tag: archive-taxonomy
 #   permalinks:
 #     category: /categories/:name/
@@ -290,5 +302,16 @@ defaults:
       author_profile: true
       read_time: true
       comments: # true
+      share: true
+      related: true
+# _notes
+  - scope:
+      path: ""
+      type: notes
+    values:
+      layout: single
+      author_profile: true
+      read_time: true
+      comments:  true
       share: true
       related: true
