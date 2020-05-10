@@ -1,16 +1,15 @@
 ---
-layout: archive
+layout: single
 title: "Cryptography"
-date: 2020-05-07
 excerpt: "`Cryptography` is the science of secret writing with the intention of keeping the data secret."
 tags:
  - cryptography
  - kerberos
  - encryption
-comments: true
-published: true
-classes: wide
 toc: true
+toc_sticky: true
+classes: wide
+last_modified_at: 2020-05-10
 ---
 
 ## What is Kerberos?
@@ -31,7 +30,7 @@ It involves 3 parties: client, server and key distribution center(KDC)
  > AS  -- > Authentication server |
    TGS -- > Ticket Granting server.
 
-![upload-image]({{ "/assets/images/sample/kdc.png" | relative_url }})
+#![upload-image]({{ "/assets/images/sample/kdc.png" | relative_url }})
 
 1. Client sends a request to the AS along with his/her file server credentials. The client uses the password as a secret key to encrypt the message.
 2. AS looks for the client's credentials in its database and uses client's password to decrypt the requeast.
@@ -42,7 +41,7 @@ It involves 3 parties: client, server and key distribution center(KDC)
 7. The client sends the service tocken to the file server.
 8. The file server decrypts the service token with a key shared by TGS if the decryption is successful, it allows the client to use its resources for acertain period of time as indicated in the token.
 
-![upload-image]({{ "/assets/img/sample/kdc1.png" | relative_url }})
+#![upload-image]({{ "/assets/img/sample/kdc1.png" | relative_url }})
 
 A good analogy of a service token is a movie ticket.
 
@@ -54,7 +53,7 @@ In Private key encryption:
 Data is encrypted using a single key known only to the sender and receiver.
 Private  key encryption is also called symmetric encryption / cryptography, because a single key is used in both encryption and decryption.
 
-![upload-image]({{ "/assets/img/sample/pk.png" | relative_url }})
+#![upload-image]({{ "/assets/img/sample/pk.png" | relative_url }})
 
 Private key encryption methods:
 1. Stream ciphers -- > works on a single bit at a time.
