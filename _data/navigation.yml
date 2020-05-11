@@ -4,6 +4,8 @@ main:
     url: /
   - title: "Notes"
     url: /notes/
+  - title: "Scripts"
+    url: /pg/
   - title: "Resources"
     url: /resources/
   - title: "About"

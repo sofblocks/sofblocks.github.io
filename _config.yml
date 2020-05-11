@@ -253,6 +253,9 @@ collections:
   notes:
     output: true
     permalink: /:collection/:path/
+  scripts:
+    output: true
+    permalink: /:collection/:path/
 
 
 
