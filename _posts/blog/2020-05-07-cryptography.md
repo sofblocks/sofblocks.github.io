@@ -1,7 +1,7 @@
 ---
 layout: single
 title: "Cryptography"
-excerpt: "`Cryptography` is the science of secret writing with the intention of keeping the data secret."
+excerpt: "The science of secret writing with the intention of keeping the data secret."
 tags:
  - cryptography
  - kerberos
