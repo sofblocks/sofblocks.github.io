@@ -7,11 +7,13 @@ tags:
  - kerberos
  - encryption
 toc: true
+toc_lable: "Contents"
 classes: wide
 last_modified_at: 2020-05-10
+tags: "crypto"
 ---
 
-## What is Kerberos?
+# What is Kerberos?
 
 > `Cryptography` is the science of secret writing with the intention of keeping the data secret. 
 Cryptography is classified into symmetric cryptography, asymmetric cryptography and hashing. 
@@ -23,7 +25,7 @@ Kerberos is built in to all major operating systems, including Microsoft Windows
 
 Since Windows 2000, Microsoft has incorporated the Kerberos protocol as the default authentication method in Windows, and it is an integral component of the Windows Active Directory service. Broadband service providers also use Kerberos to authenticate DOCSIS cable modems and set-top boxes accessing their networks.
 
-It involves 3 parties: client, server and key distribution center(KDC)
+## It involves 3 parties: client, server and key distribution center(KDC)
 
  KDC is made up of:
  > AS  -- > Authentication server |
