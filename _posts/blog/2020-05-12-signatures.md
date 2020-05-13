@@ -74,3 +74,6 @@ In this scenario we see how asymmetric and symmetric key algorithm works togethe
 - Once a connection has been established, symmetric key algorithm is used to encrypt and decrypt the connection between the two hosts.
 
 `SSL and the green padlock indicates that the connection is encrypted but does not mean that the website itself is secure.`
+
+![upload-image]({{ "/assets/imgs/notes/cert.png" | relative_url }}) 
+![upload-image]({{ "/assets/imgs/notes/cert2.png" | relative_url }})
