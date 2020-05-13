@@ -72,4 +72,4 @@ The encryption process starts with the receiver
 ![upload-image]({{ "/assets/imgs/notes/kp.png" | relative_url }})
 
 The problem is the receiver can't verify who really sent the message.
-In order to verify the sender needs a digital signature.
+In order to verify the sender needs a [digital signature](/signatures)

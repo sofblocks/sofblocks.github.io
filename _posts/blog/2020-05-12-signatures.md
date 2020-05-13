@@ -24,3 +24,4 @@ Purpose:
 3. He sends the digital signature together with the message to Alice.
 4. Alice decrypts the digital signature using the public key. If it fails to decrypt then she knows the sender wasn't Bob.
 5. Once Alice gets the digest, she hashes the message using the same hashing algorithm used by Bob and compares the two digests.
+The signature is valid when the hash values are equal.
