@@ -77,3 +77,14 @@ In this scenario we see how asymmetric and symmetric key algorithm works togethe
 
 ![upload-image]({{ "/assets/imgs/notes/cert.png" | relative_url }}) 
 ![upload-image]({{ "/assets/imgs/notes/cert2.png" | relative_url }})
+
+## SSL / TLS Handshake Protocol
+
+Handshake protocal is involved with the top 3 layers in osi model and 1st in tcp/ip  model
+1. client sends a message to the server containing : ssl / tls version, cryptogrtaphic algorithms and data compressing methods suported by the client.
+2. server responds with a message containing: cryptogaphic algorithm chosen from the list provided by the client, session id, its digital certificate and its pubic key
+3. client will contact server CA and verify the server digital certificate so as to established trust
+4. client sends a shared key encrypted with the server's public key to the server.
+5. client sends a finished message encrypted with the shared secret key indicating the client part of hanshake is complete.
+6. server side responds with a final message encrypted with secret key indicating the handshake protocal is complete.
+once the handshake protocal is done, the client and the server can now exchange encrypted messages.
