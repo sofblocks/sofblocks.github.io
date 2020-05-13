@@ -5,7 +5,7 @@ excerpt: "An electronic verification of the sender."
 toc: true
 toc_lable: "Contents"
 classes: wide
-tags: [Cryptography, Kerberos, Hashing, Encryption]
+tags: [Cryptography, Encoding, Hashing, Encryption]
 ---
 
 ## Equivalent to a hand written signature
@@ -25,3 +25,15 @@ Purpose:
 4. Alice decrypts the digital signature using the public key. If it fails to decrypt then she knows the sender wasn't Bob.
 5. Once Alice gets the digest, she hashes the message using the same hashing algorithm used by Bob and compares the two digests.
 The signature is valid when the hash values are equal.
+
+## Hashing
+
+Creates a unique digital fingerprint data called digest / hash / message digest.
+
+![upload-image]({{ "/assets/imgs/notes/hash.png" | relative_url }})
+
+It is primarily used for comparison purpose not for encryption.
+ 1. You can't reverse a hash to determine the original data. It's not reversible, unlike in encoding (a different representation of an input).
+ 2. Fixed size.
+
+It's for these features that it is used for storing passwords
