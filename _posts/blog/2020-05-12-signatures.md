@@ -63,7 +63,14 @@ SSL ensures a private “conversation” just between the two intended parties. 
 ![upload-image]({{ "/assets/imgs/notes/sslf.jpg" | relative_url }})
 
 1. Browser request secure pages from the web server.
-2. Web server replies back with its public key and ssl certificate digitalLy signed by a third party or CA ( certificate authotity)
-3. The browser checks for the issuer's digital certificate to validate it. The digital signature is created by CA private key.
-   Most browsers a previosly installed with many CA's public keys
- Once the digital certificate has been verified then it can be trusted
+2. Web server replies back with its ssl certificate (which contains its publick key) digitalLy signed by a third party or CA ( certificate authotity).
+3. The browser checks for the issuer's (CA) digital certificate to validate it. It does this by running through its database containing various public keys (previously installed) of various Certificate Authorities. 
+4. If the cerificate is valid -- > its indeed signed by the said certificate authority, the browser lights up a green padlock at the address bar simply indicating that certificates really belongs to the web server.
+5. The browser generates a pair of symmetric secret keys, encrypts one of the keys using the web server's public key and sends it over.
+6. The web server uses its private key to decrypt the message and obtain the secret key. Both parties uses the key to encrypt and decrypt any communication between them.
+
+In this scenario we see how asymmetric and symmetric key algorithm works together.
+- Asymmetric key is used to verify the identity of the owner and the public key so that trust is built.
+- Once a connection has been established, symmetric key algorithm is used to encrypt and decrypt the connection between the two hosts.
+
+`SSL and the green padlock indicates that the connection is encrypted but does not mean that the website itself is secure.`
