@@ -11,3 +11,11 @@ toc: true
 
 ## Guides
 [Useful Contents](https://guide.offsecnewbie.com/)
+
+## Useful Sites:
+
+[Hacking Articles](https://www.hackingarticles.in/)
+
+[Shell Commands](https://explainshell.com/)
+
+[Border Gate](https://www.bordergate.co.uk/)
