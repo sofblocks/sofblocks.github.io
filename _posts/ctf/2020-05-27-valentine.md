@@ -37,3 +37,28 @@ Get graphical representation [here](https://xkcd.com/1354/)
 
 Is a computer security vulnerability (priviledge escalation exploit) for the Linux kernel that affects all Linux-based operating systems including Android that use older versions of the Linux kernel. Existed in the Linux Kernel since 2007, but was only discovered and exploited in 2016.
 Malicious programs can potentially set up a race condition to turn a read-only mapping of a file into a writable mapping. Thus, an underprivileged user could utilize this flaw to elevate their privileges on the system.
+
+Normal situation:
+1. You read from file. Page table points to original file
+2. You request write.
+3. copy being created
+4. page table points to copy
+5. you write
+6. file isn't saved because it was read-only
+
+Race condition:
+1. You read from file. Page table points to original file
+2. You request write.
+3. copy being created
+4. Before the write is done, madvasie(DONTNEED) in the other thread caused a throwing away of the copy.
+5. Memory manager only has the original mapping, thus the write goes there to the original file.
+6. copy isn't saved because it was read-only. But anyway we have modified the original file.
+
+
+Points to note:
+
+* Getting the private key could have been avoided if the user did not publish his credentials on a public web server.
+* Getting the passphrase could have been avoided as well if the patched version of OpenSSL was installed.
+* To escalate to root privileges we had two options: (1) exploit the Dirty COW vulnerability, or (2) attach to a tmux session that was owned by root.
+
+* Close the tmux session once you’re done instead of having it run (and accessible) the entire time.
