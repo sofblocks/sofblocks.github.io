@@ -2,7 +2,7 @@
 layout: single
 title: "Valentine - HTB"
 permalink: /valentine/
-tags: [HTB, CTF, Heartbeat, Dirty Cow, SSH]
+tags: [HTB, CTF, Heartbleed, Dirty Cow, SSH]
 toc: true
 ---
 
