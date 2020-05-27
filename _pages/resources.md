@@ -20,5 +20,7 @@ toc: true
 
 [Border Gate](https://www.bordergate.co.uk/)
 
+[Confidence Interval](https://xkcd.com/)
+
 ## Password Hash Cracker
 [Crack Station](https://crackstation.net/)
