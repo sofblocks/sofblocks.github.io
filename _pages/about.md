@@ -10,8 +10,8 @@ classes: wide
 This is like a personal notebook containing a collection of stuff related to IT security specifically Penetration Testing.
 Basically it contains stuff that I come accross on my day-to-day cyber security learning journey.
 
-Stuff that I can refer to incase I don't remember. It also contains some reference indicating where i got the information from.
-For the one who is here in quest for knowledge, I hope you find something useful.
+Stuff that I can refer to incase I don't remember, some of this may be useful to others so I hope you find something useful.
+It also contains some reference indicating where I got the information from.
 ------------------------------------------------------------------------------------------------------------------------------------
 ```python
 A rose smells better than a cabbage, but that doesn\'t mean it can make a better stew. 
