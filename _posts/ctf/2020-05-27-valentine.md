@@ -61,4 +61,4 @@ Points to note:
 * Getting the passphrase could have been avoided as well if the patched version of OpenSSL was installed.
 * To escalate to root privileges we had two options: (1) exploit the Dirty COW vulnerability, or (2) attach to a tmux session that was owned by root.
 
-* Close the tmux session once you’re done instead of having it run (and accessible) the entire time.
+* Close the tmux session once you’re done instead of having it run (and accessible) the entire time. 
