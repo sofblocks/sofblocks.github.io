@@ -10,6 +10,7 @@ classes: wide
 This is like a personal notebook containing a collection of stuff related to IT security specifically Penetration Testing.
 These are things I come accross on my day-to-day cyber security learning journey.Stuff that I can refer to incase I don't remember, I hope you find something useful.
 ------------------------------------------------------------------------------------------------------------------------------------
+
 Simple rules to live by.
 ```yml
 --> Don't compare yourself to others. Everyone has their own strength such for yours and build on it. 
