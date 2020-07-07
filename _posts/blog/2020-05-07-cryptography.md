@@ -2,6 +2,7 @@
 layout: single
 title: "Cryptography"
 excerpt: "The science of secret writing with the intention of keeping the data secret."
+permalink: /cryptography/
 toc: true
 toc_lable: "Contents"
 classes: wide
