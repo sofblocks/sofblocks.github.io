@@ -108,9 +108,11 @@ An attacker spins up the tool on their system, and start listening on the main n
 ```
 A victim on the other hand accidently types a wrong network share
 
+![upload-image]({{ "/assets/imgs/notes/rshare.png" | relative_url }})
 
 The python responders spoofs the request and the victim host responds with the username and NTLMv2 hash.
 
+![upload-image]({{ "/assets/imgs/notes/responder.png" | relative_url }})
 
 ### LLMNR Poisoning Mitigation
 
