@@ -2,7 +2,7 @@
 layout: single
 title: "Attacking AD"
 permalink: /ad-attacks/
-tags: [Active Directory, mim, LLMNR]
+tags: [Active Directory, mim, LLMNR, kerberos. IPv6]
 toc: true
 ---
 
@@ -38,11 +38,11 @@ The DC compares the encrypted challenge it has computed (in the above step) to t
 
 ### Kerberos
 
-Our blog post on [Cryptography](/cryptography) explains more in depth how kerberos works.
+Our blog post on [Cryptography](/cryptography) explains in depth how kerberos works.
 
 The user attempts to join the network through the client’s interactive logon screen.
 
-The client constructs a package called an authenticator which has information about the client (username, date, and time). Except for the username, all the other information contained in the authenticator is encrypted with the user’s password.
+The client constructs a package called an authenticator which has information about the user (username, date, and time). Except for the username, all the other information contained in the authenticator is encrypted with the user’s password.
 
 The client then sends the encrypted authenticator to the KDC (Key Distribution Center).
 
@@ -67,7 +67,7 @@ Only windows devices can authenticate to AD using the above discussed protocols,
 
 Well we have other protocols such as RADIUS and LDAP (Lightweight Directory Access Protocol)
 
-LDAP is an open and cross platform protocol used for directory services authentication. It enable communication between different directory services servers
+LDAP is an open and cross platform protocol used for directory services authentication. It enable communication between different directory services servers.
 
 ## Windows Name Resolutions:
 
@@ -82,23 +82,23 @@ DNS ---> A distributed system of name resolvers.
 
 LLMR ---> Link-Local Multicast Name Resolution, allows both IPv4 and IPv6 hosts to perform name resolution for hosts on the same local link. Sends a network packet to UDP port 5355 to the multicast network address.
 
-NBT-NS --->  Resolves a NetBios name (16-byte string) to one or more IP addresses. An example of a process that uses a NetBIOS name is the File and Printer Sharing for Microsoft Networks service on a computer running Windows.
+NBT-NS --->  Resolves a NetBios name (16-byte string) to one or more IP addresses. An example of a process that uses a NetBIOS name is the File and Printer Sharing for Microsoft Networks service.
 
 
 ## Exploiting Windows Name Resolution
 
 ### LLMR Poisoning:
 
-In a case where windows machine cannot resolve a hostname using DNS or the local host file, it resorts to LLMNR protocol and ask the neighbouring computers on the network about it.
+In a case where windows machine cannot resolve a hostname using DNS or the local host file, it resorts to LLMNR or NBT-NS protocols and ask the neighbouring computers on the network about it.
 
 This may be caused by:
 
 * A user accidently typing a wrong network share.
 * A broken file share or a network printer
 
-Now remember LLMNR works by sending network packets to UDP port 5355 to the multicast network address, asking all nodes on the network to reply if they are authoratively known as the hostname in query.
+Now remember LLMNR works by sending network packets to UDP port 5355 to the multicast network address or TCP port 139/445 in the case of NBT-NS, asking all nodes on the network to reply if they are authoratively known as the hostname in query.
 
-A hacker somewhere on the network may intercept the traffic on UDP port 5355 and respond by claiming that they are authoratively known as the hostname in query.  If the requested host belongs to a resource that requires identification/authentication, the username and NTLMv1/ NTLMv2 hash will then be sent to the hacker's system. The attacker can then grab the hash and try to crack it using tools such as hashcat or john the ripper.
+A hacker somewhere on the network may intercept the traffic on UDP port 5355 or Tcp port 137/139/445 and respond by claiming that they are authoratively known as the hostname in query.  If the requested host belongs to a resource that requires identification/authentication, the username and NTLMv1/ NTLMv2 hash will then be sent to the hacker's system. The attacker can then grab the hash and try to crack it using tools such as hashcat or john the ripper.
 
 Using python responder tool to demostrate the LLMNR expoit.      
 An attacker spins up the tool on their system, and start listening on the main network interface.
@@ -110,19 +110,19 @@ A victim on the other hand accidently types a wrong network share
 
 ![upload-image]({{ "/assets/imgs/notes/rshare.png" | relative_url }})
 
-The python responders spoofs the request and the victim host responds with the username and NTLMv2 hash.
+The python responders spoofs the request and the victim host responds with domain username and NTLMv2 hash.
 
 ![upload-image]({{ "/assets/imgs/notes/responder.png" | relative_url }})
 
 ### LLMNR Poisoning Mitigation
 
-* Disable LLMNR and NBT-NS(NetBIOS Name Service ):
+* Disable LLMNR:
 
 Local group policy -- > Computer configuration --> Administrative templates --> Network --> Dns client --> Turn off multicast name resolution : Enable
 
 ![upload-image]({{ "/assets/imgs/notes/llmnr.png" | relative_url }})
 
-* Disabling NTB-NS:
+* Disabling NBT-NS (NetBIOS Name Service):
 
 ![upload-image]({{ "/assets/imgs/notes/nbt.png" | relative_url }})
 
@@ -132,29 +132,69 @@ Local group policy -- > Computer configuration --> Administrative templates --> 
 
 Many company networks are yet to adopt IPv6 system, as IPv4 protocol is still prevalent. However almost every windows OS version have IPv6 feature enabled by default even though the protocol being used is IPv4.
 
-Windows queries for IPv6 configuration regularly as shown in the figure below of a captured wireshark packet.
+Windows queries for IPv6 configuration regularly as shown in the figure below of wireshark capture packet.
+
+![upload-image]({{ "/assets/imgs/notes/wrsh.png" | relative_url }})
 
 If IPv6 is set up for auto-configuration but no configuration servers are on the network, an attacker sitting on the same network can set up a rogue server to answer configuration requests. 
 Modern operating systems prefer IPv6 over legacy IPv4 and will use a rogue IPv6 connection by default if one is available.  This allows an attacker to hijack traffic such as Domain Name System lookups, creating a potentially bad security problem such as Active Directory Attack.
 
 To demostrate this attack we will use python tool called mim6 by fox-IT company. You can ran it across all targets on a network or pin point a specific target.
 
-mitm6 will reply to those DHCPv6 requests, assigning the victim an IPv6 address within the link-local range. 
-
 ```yml
 > mitm6 -d sofblocks.com  ----> spins up a IPv6 dhcp server and starts responding to different requests on the network:
 ```
+Will Wait for a client/victim to request for ipv6 via dhcpv6 or request for wpad configuration. Best chance is when the victim reboots or unplug network cable.
+mitm6 will reply to those DHCPv6 requests, assigning the victim an IPv6 address within the link-local range. 
 
-Quickly the  victim machine sets the attacker as IPv6 DNS server:
-//picture
+![upload-image]({{ "/assets/imgs/notes/mitm.png" | relative_url }})
+
+Quickly on the other end the victim's machine adopts the attacker's IPv6 rogue DNS server:
+
+![upload-image]({{ "/assets/imgs/notes/victim.png" | relative_url }})
 
 As soon as this happens the victim will start querying for the WPAD configuration of the network. Since these DNS queries are sent to the attacker, it can just reply with  with a fake wpad file with its own IP address set up as a proxy.
 
 ### WPAD
 
 Windows Proxy AutoDiscovery protocol automatically detect a network proxy used for connecting to the internet in corporate environments.
-When the victim launchs a browser to access any site, it will use the attacker's machine as the proxy. Attacker replies with a HTTP 407 Proxy Authentication required normally HTTP uses HTTP 401.
+When the victim launches a browser to access any site, it will use the attacker's machine as the proxy. Attacker replies with a HTTP 407 Proxy Authentication required normally HTTP uses HTTP 401.     
 The victim will send NTLM hash to the attacker, who can relay it to different services. With this relaying attack, the attacker can authenticate as the victim on services, access information on websites and shares, and if the victim has enough privileges, the attacker can even execute code on computers or even take over the entire Windows Domain.
+
+Mim6 tool will be used to spoof the DNS so we will need another tool to serve WPAD file to the victim and prompt them for authentication.
+For this we will use a tool called ntlmrelayx which is part of the impacket Python library. The tool will also be used to relay the victims credentials to other servers on the network.
+
+```yml
+> ntlmrelayx.py -6 -t ldaps://192.168.159.144 -wh fakewpad.sofblocks.com -l readme
+
+> ntlmrelayx.py -6 -t smb://192.168.159.144 -wh fakewpad.sofblocks.com -t -l readme 
+```
+
+### Mitigations
+
+The best way to guard against these attacks is to disable IPv6 if its not in use in your network, however this is not recommended.
+Many newer applications may fail to work correctly if ipv6 is disabled, plus its just a matter of time before it becomes mandatory as the address pool continues to shrink.   
+So the best thing to do is to have IPv4 favoured over IPv6.
+
+First check the IPv6 precedence:
+```yml
+> netsh interface ipv6 show prefixpolicies
+```
+![upload-image]({{ "/assets/imgs/notes/ipv6.png" | relative_url }})
+
+IPv6 addresses are preferred as ::/0 and has a precedence of 40.
+
+Next command will make IPv4 addresses have a precedence of 46.
+
+```yml
+> netsh interface ipv6 set prefixpolicy ::ffff:0:0/96 46 4
+```
+
+There are many blog posts out there that describes how to disable WPAD and how to mitigate against NTLM relay attacks.
+
+References:
+
+[mitm6 – compromising IPv4 networks via IPv6](https://blog.fox-it.com/2018/01/11/mitm6-compromising-ipv4-networks-via-ipv6/)
 
 
 
