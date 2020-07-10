@@ -165,10 +165,23 @@ Mim6 tool will be used to spoof the DNS so we will need another tool to serve WP
 For this we will use a tool called ntlmrelayx which is part of the impacket Python library. The tool will also be used to relay the victims credentials to other servers on the network.
 
 ```yml
-> ntlmrelayx.py -6 -t ldaps://192.168.159.144 -wh fakewpad.sofblocks.com -l readme
+> ntlmrelayx.py -6 -t ldaps://192.168.159.144 -wh fakewpad.sofblocks.com -l juicy
 
 > ntlmrelayx.py -6 -t smb://192.168.159.144 -wh fakewpad.sofblocks.com -t -l readme 
 ```
+### Attack
+
+A user with admin privileges logs into one of the workstations within the spoofed network. In a couple of minutes, ntlmnrelayx tool captures the admin hash and relays them to the domain controller and begins to attack.
+
+![upload-image]({{ "/assets/imgs/notes/ldaps.png" | relative_url }})
+
+It further attempts to enumerate active directory and creates a new user.
+
+![upload-image]({{ "/assets/imgs/notes/attack.png" | relative_url }})
+
+We can confirm that the user has been added in active directory.
+
+![upload-image]({{ "/assets/imgs/notes/user.png" | relative_url }})
 
 ### Mitigations
 
