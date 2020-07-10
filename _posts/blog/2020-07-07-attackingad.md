@@ -18,7 +18,7 @@ Two main protocols used are NTLM and Kerberos.
 
 ### NTLM
 
-New Technology LAN Manager (NTLM) workes on the basis of challenge and response.
+New Technology LAN Manager (NTLM) works on the basis of challenge and response.
 
 The user provides their username, password, and domain name at the interactive logon screen of a client.
 
