@@ -7,7 +7,7 @@ classes: wide
 
 > Sysadmin|Penetration Tester|Infosec perpetual learner.
 
-This is like a personal notebook containing a collection of stuff related to IT security specifically Penetration Testing.
+My name is Kevin Mwanjumwa, this is like a personal notebook containing a collection of stuff related to IT security specifically Penetration Testing.
 These are things I come accross on my day-to-day cyber security learning journey.Stuff that I can refer to incase I don't remember, I hope you find something useful.
 ------------------------------------------------------------------------------------------------------------------------------------
 
