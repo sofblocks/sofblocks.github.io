@@ -100,6 +100,7 @@ author:
   email            : "sofblocks@gmail.com"
   twitter          : "sofblocks"
   github           : "sofblocks"
+  linkedin         : "kevin-mwanjumwa"
   links:
     - label: "Email"
       icon: "fas fa-fw fa-envelope-square"
@@ -119,6 +120,9 @@ author:
     - label: "Instagram"
       icon: "fab fa-fw fa-instagram"
       # url: "https://instagram.com/"
+    - label: "Linkedin"
+      icon: "fab fa-fw fa-linkedin"
+      # url: "https://linkedin.com/
 
 # Site Footer
 footer:

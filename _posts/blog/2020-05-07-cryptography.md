@@ -12,8 +12,8 @@ tags: [Cryptography, Kerberos, Hashing, Encryption]
 
 ## What is Kerberos?
 
-> `Cryptography` is the science of secret writing with the intention of keeping the data secret. 
-Cryptography is classified into symmetric cryptography, asymmetric cryptography and hashing. 
+> `Cryptography` is the science of secret writing with the intention of keeping the data secret.
+Cryptography is classified into symmetric cryptography, asymmetric cryptography and hashing.
 
 [**Kerberos**] in Greek mythology was a three-headed hound of Haides.
 
@@ -38,7 +38,7 @@ KDC is made up of:
 5. TGS decrypts the request with the secret key shared by AS.
 6. TGS issues the client with a token encrypted with another secret key which is shared with the File server.
 7. The client forwards the service token to the file server.
-8. The file server decrypts the service token with a key shared by TGS if the decryption is successful, it allows the client to use its resources for acertain period of time as indicated in the token.
+8. The file server decrypts the service token with a key shared by TGS if the decryption is successful, it allows the client to use its resources for a certain period of time as indicated in the token.
 
 This method of authentication is called Symmetric cryptography.
  
@@ -74,5 +74,3 @@ The encryption process starts with the receiver
 
 The problem is the receiver can't verify who really sent the message.
 In order to verify the sender needs a [digital signature](/signatures)
-
-
