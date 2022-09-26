@@ -81,6 +81,6 @@ PS C:\Users\Admin> Get-AzContext
 
 Name                                     Account                               SubscriptionName                      Environment                           TenantId
 ----                                     -------                               ----------------                      -----------                           --------
-00000000-0000-0000-0000-000000000000 ... test@gmail.com                                                    AzureCloud                            00000000-0000-0000-0000-000000000000
+00000000-0000-0000-0000-000000000000 ... test@gmail.com                                                         AzureCloud                            00000000-0000-0000-0000-000000000000
 ```
 
