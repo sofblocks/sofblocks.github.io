@@ -11,21 +11,21 @@ Powershell can also be used to script, automate, and manage workloads running on
 
 In this post we will be looking on how to get started with Azure Powershell but first we must understand some of its components. 
 
-What is  [CMDLETS]: A cmdlet is a single lightweight command that performs an action   
-What is A Module: A module is a set of related functionalities and resources that are grouped together. 
+What is  **CMDLETS**: A cmdlet is a single lightweight command that performs an action.   
+What is a **Module**: A module is a set of related functionalities and resources that are grouped together. 
 
 ## Exploring PowerShell’s cmdlets
 
 ### Get-Command
 The Get-Command cmdlet gets all commands that are installed on the computer, including cmdlets, aliases, functions, filters, scripts, and applications. Get-Command gets the commands from PowerShell modules and commands that were imported from other sessions.
 ```powershell
-    Get-Command "name of the command"
+Get-Command "name of the command"
 ```
 
 ### Get-Help    
 The cmdlet displays information about PowerShell concepts and commands.
 ```powershell
-    Get-help "name of the command"
+Get-help "name of the command"
 ```
 ![upload-image]({{ "/assets/imgs/notes/get-help.png" | relative_url }})
 
@@ -45,3 +45,14 @@ Listing parameters of a cmdlet.
 In powershell window you can use the tab key to get command completion. So if you enter "get-com" and then type a TAB, it changes what you typed into "Get-Command".
 To list all available parameters for a cmdlet you use Ctrl + Space.
 ![upload-image]({{ "/assets/imgs/notes/ctrlspace.png" | relative_url }})
+
+Alternatively you can configure the tab key to perform the above action of Ctrl + Space.
+Type the following command to open powershell automatic variable with a notepad.
+```powershell
+notepad $PROFILE 
+# paste the following command
+# Shows navigable menu of all options when hitting Tab
+
+Set-PSReadlineKeyHandler -Key Tab -Function MenuComplete
+```
+
