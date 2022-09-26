@@ -10,7 +10,8 @@ PowerShell is a command-based shell and scripting language used for task automat
 Powershell can also be used to script, automate, and manage workloads running on cloud platforms such as GCP and Azure because of its well laid out syntax which makes it easy to learn and use.
 
 In this post we will be looking on how to get started with Azure Powershell but first we must understand some of its components. 
-What is  CMDLETS: A cmdlet is a single lightweight command that performs an action   
+
+What is  [CMDLETS]: A cmdlet is a single lightweight command that performs an action   
 What is A Module: A module is a set of related functionalities and resources that are grouped together. 
 
 ## Exploring PowerShell’s cmdlets
