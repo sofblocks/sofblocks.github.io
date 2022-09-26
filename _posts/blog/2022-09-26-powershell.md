@@ -66,14 +66,21 @@ Now that we know some basic commands and useful shortcut keys, let get our hands
 ```powershell
 >Install-Module -Name Az -Force 
 ```
-Once the Azure module is installed Connect to your Azure account using the Connect-AzAccount cmdlet. When you see the Microsoft Azure pop-up, sign in to your Azure account. You’re now logged in to Azure.
+Once the Azure module is installed, connect to your Azure account using the **Connect-AzAccount** cmdlet. When you see the Microsoft Azure pop-up, sign in to your Azure account. You’re now logged in to Azure.
 
 ```powershell
-connect-AzAccount
+Connect-AzAccount
 ```
 You can also connect to Azure account with a specified tenant and subscription
 ```powershell
 Connect-AzAccount -Tenant 'xxxx-xxxx-xxxx-xxxx' -SubscriptionId 'yyyy-yyyy-yyyy-yyyy'
 ``` 
+To get the current account details used to authenticate Azure Resource Manager requests we use the **Get-AzContext** cmdlet.
+```powershell
+PS C:\Users\Admin> Get-AzContext
 
+Name                                     Account                               SubscriptionName                      Environment                           TenantId
+----                                     -------                               ----------------                      -----------                           --------
+00000000-0000-0000-0000-000000000000 ... test@gmail.com                                                    AzureCloud                            00000000-0000-0000-0000-000000000000
+```
 
