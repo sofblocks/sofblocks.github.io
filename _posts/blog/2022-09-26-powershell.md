@@ -50,9 +50,30 @@ Alternatively you can configure the tab key to perform the above action of Ctrl 
 Type the following command to open powershell automatic variable with a notepad.
 ```powershell
 notepad $PROFILE 
-# paste the following command
+```
+Paste the following command
+```powershell
 # Shows navigable menu of all options when hitting Tab
 
 Set-PSReadlineKeyHandler -Key Tab -Function MenuComplete
 ```
+Next restart the session. Now if you press the tab key it will be equivalent to pressing the Ctrl + Space keys combination.
+
+## Getting started with Azure PowerShell
+### Installing the powershell module.
+
+Now that we know some basic commands and useful shortcut keys, let get our hands dirty. First we shall start by installing the Azure module. 
+```powershell
+>Install-Module -Name Az -Force 
+```
+Once the Azure module is installed Connect to your Azure account using the Connect-AzAccount cmdlet. When you see the Microsoft Azure pop-up, sign in to your Azure account. You’re now logged in to Azure.
+
+```powershell
+connect-AzAccount
+```
+You can also connect to Azure account with a specified tenant and subscription
+```powershell
+Connect-AzAccount -Tenant 'xxxx-xxxx-xxxx-xxxx' -SubscriptionId 'yyyy-yyyy-yyyy-yyyy'
+``` 
+
 
