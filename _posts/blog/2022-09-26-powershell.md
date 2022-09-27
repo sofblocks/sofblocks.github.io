@@ -78,4 +78,9 @@ Connect-AzAccount -Tenant 'xxxx-xxxx-xxxx-xxxx' -SubscriptionId 'yyyy-yyyy-yyyy-
 To get the current account details used to authenticate Azure Resource Manager requests we use the **Get-AzContext** cmdlet.
 ![upload-image]({{ "/assets/imgs/notes/azcontext.png" | relative_url }})
 
-  
+### How to create an Azure VM using Azure PowerShell
+To create a VM, start by creating the Azure resource group using New-AzResourceGroup. You’ll want to make this a variable because you’ll need it to pass information forward when you create the Azure VM.
+```powershell
+> $RG = New-AzResourceGroup -Name "name_of_the_resource_group" -Location "Location"  
+```
+
