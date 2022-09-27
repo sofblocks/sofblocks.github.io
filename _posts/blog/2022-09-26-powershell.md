@@ -93,11 +93,11 @@ $Vnet = New-AzVirtualNetwork -ResourGroup $RG.Name -Location $RG.Location -Name 
 ```powershell
 $subnet = New-AzVirtualNetworkSubnetConfig -Name "subnet" -VirtualNetwork $Vnet.Name  -AddressPrefix '10.0.0.0/24' 
 ```
-
-
- you’ll create another variable for the creation the Azure VM using New-AzVM cmdlet. We'll go ahead and pass the resource group name variable and location variables.
+Next update the Virtual Network to pick the changes.
 ```powershell
-> $RG = New-AzResourceGroup -Name "name_of_the_resource_group" -Location "Location"  
----
-> $RG = New-AzResourceGroup -Name "production" -location "EastUs"
+$Vnet | Set-AzVirtualNetwork
+```
+Next, you’ll create another variable for the creation the Azure VM using New-AzVM cmdlet. We'll go ahead and pass the resource group name variable and location variables.
+```powershell
+$vm = New-AzVM -ResourceGroup $RG.Name -Location $RG.Location -VirtualNetwork $Vnet.Name -Subnet $subnet.Name -Name "VmName" -AsJob 
 ```
