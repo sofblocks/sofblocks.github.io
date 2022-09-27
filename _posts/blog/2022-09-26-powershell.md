@@ -64,7 +64,7 @@ Next restart the session. Now if you press the tab key it will be equivalent to 
 
 Now that we know some basic commands and useful shortcut keys, let get our hands dirty. First we shall start by installing the Azure module. 
 ```powershell
->Install-Module -Name Az -Force 
+> Install-Module -Name Az -Force 
 ```
 Once the Azure module is installed, connect to your Azure account using the **Connect-AzAccount** cmdlet. When you see the Microsoft Azure pop-up, sign in to your Azure account. You’re now logged in to Azure.
 
