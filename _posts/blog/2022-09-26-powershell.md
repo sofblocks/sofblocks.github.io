@@ -101,3 +101,10 @@ Next, you’ll create another variable for the creation the Azure VM using New-A
 ```powershell
 $vm = New-AzVM -ResourceGroup $RG.Name -Location $RG.Location -VirtualNetwork $Vnet.Name -Subnet $subnet.Name -Name "VmName" -AsJob 
 ```
+The AsJob switch runs the command in the backgoung this gives you space and time to run other comomands in powershell. Such as creation of other resources in Azure.
+
+You can inspect the job and progress at any time with Get-Job.
+```powershell
+Get-Job $vm
+```
+### Asigning Public Address to a Virtual Machine.
