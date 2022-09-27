@@ -82,5 +82,22 @@ To get the current account details used to authenticate Azure Resource Manager r
 To create a VM, start by creating the Azure resource group using New-AzResourceGroup. You’ll want to make this a variable because you’ll need it to pass information forward when you create the Azure VM.
 ```powershell
 > $RG = New-AzResourceGroup -Name "name_of_the_resource_group" -Location "Location"  
+---
+> $RG = New-AzResourceGroup -Name "production" -location "EastUs"
 ```
 
+Next, you'll create a virtual network followed by a virtual network subnet.
+```powershell
+$Vnet = New-AzVirtualNetwork -ResourGroup $RG.Name -Location $RG.Location -Name "Vnet" -AddressPrefix '10.0.0.0/16' 
+```
+```powershell
+$subnet = New-AzVirtualNetworkSubnetConfig -Name "subnet" -VirtualNetwork $Vnet.Name  -AddressPrefix '10.0.0.0/24' 
+```
+
+
+ you’ll create another variable for the creation the Azure VM using New-AzVM cmdlet. We'll go ahead and pass the resource group name variable and location variables.
+```powershell
+> $RG = New-AzResourceGroup -Name "name_of_the_resource_group" -Location "Location"  
+---
+> $RG = New-AzResourceGroup -Name "production" -location "EastUs"
+```
