@@ -144,3 +144,7 @@ Restart the VM:
 ```powershell
 Restart-AzVM -ResourceGroupName $RG.Name -Name $vm.Name
 ```
+Remove the VM:
+```powershell
+Remove-AzVM -ResourceGroupName $RG.Name -Name $vm.Name
+```
