@@ -105,9 +105,9 @@ $PIP = New-AzPublicIpAddress -Name "name_of_the_pulicIP" -ResourceGroupName $RG.
 ```powershell
 $vm = New-AzVM -ResourceGroup $RG.Name -Location $RG.Location -VirtualNetwork $Vnet.Name -Subnet $subnet.Name  -PublicIpAddressName $PIP.Name -OpenPorts 80,3389 -Name "VmName" -AsJob 
 ```
-The AsJob switch runs the command in the backgoung this gives you space and time to run other commands
+The AsJob switch runs the command in the background this gives you space and time to run other commands
 in powershell. Such as creation of other resources in Azure.
-You can inspect the job and progress at any time with Get-Job.
+You can inspect the job and progress at any time using the Get-Job cmdlet.
 ```powershell
 Get-Job $vm
 ```
