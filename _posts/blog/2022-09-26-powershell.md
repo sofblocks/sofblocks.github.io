@@ -85,6 +85,20 @@ To create a VM, start by creating the Azure resource group using New-AzResourceG
 ---
 > $RG = New-AzResourceGroup -Name "production" -location "EastUs"
 ```
+While selecting a location in the Azure portal you just have to select from the drop down menu. However, in PowerShell you have to know exactly what the name of the data center is and whether it supports the resource you are going to deploy.
+To list all the available regions run the following command.
+```powershell
+Get-AzLocation | Format-Table
+```
+The Providers property in the output lists the resources available in the region.
+To find regions that support a specific resource e.g Azure SQL run the following command.
+```powershell
+Get-AzLocation | ? {$_.Providers -like "*sql*"} | Format-Table
+```
+To list all the services in a particular region:
+```powershell
+Get-AzLocation | ? {$_.Location -eq "eastasia"} | select Providers
+```
 
 Next, you'll create a virtual network followed by a virtual network subnet.
 ```powershell
