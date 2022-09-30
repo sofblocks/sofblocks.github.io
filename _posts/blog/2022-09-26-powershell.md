@@ -97,7 +97,7 @@ Get-AzLocation | ? {$_.Providers -like "*sql*"} | Format-Table
 ```
 To list all the services in a particular region:
 ```powershell
-Get-AzLocation | ? {$_.Location -eq "eastasia"} | select Providers
+Get-AzLocation | ? {$_.Location -eq "eastasia"} | select Providers  
 ```
 
 Next, you'll create a virtual network followed by a virtual network subnet.
@@ -111,11 +111,12 @@ Next update the Virtual Network to pick the changes.
 ```powershell
 $Vnet | Set-AzVirtualNetwork
 ```
-Next, you’ll create another variable for the creation the Azure VM using New-AzVM cmdlet. We'll go ahead and pass the resource group name variable and location variables.
-### Asigning Public Address to a Virtual Machine.
+
+### Creating a Public IP Address
 ```powershell
 $PIP = New-AzPublicIpAddress -Name "name_of_the_pulicIP" -ResourceGroupName $RG.Name -AllocationMethod Dynamic -Location $RG.Location
 ```
+Next, you’ll create another variable for the creation the Azure VM using New-AzVM cmdlet. We'll go ahead and pass the variables that we have created.
 ```powershell
 $vm = New-AzVM -ResourceGroup $RG.Name -Location $RG.Location -VirtualNetwork $Vnet.Name -Subnet $subnet.Name  -PublicIpAddressName $PIP.Name -OpenPorts 80,3389 -Name "VmName" -AsJob 
 ```
