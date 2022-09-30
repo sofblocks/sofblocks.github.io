@@ -127,11 +127,11 @@ You can inspect the job and progress at any time using the Get-Job cmdlet.
 Get-Job $vm
 ```
 
-Get details of the created Virtual Machine:
+To get the details of a Virtual Machine run the following command:
 ```powershell
 $vm_details = Get-AzVM -Name "vm_name" -ResourceGroup "Resource_group_name"
 ```
-Manage the VM's
+The following command are used to manage the VM's
 Start the VM:
 ```powershell
 Start-AzVM -ResourceGroupName $RG.Name -Name $vm.Name
