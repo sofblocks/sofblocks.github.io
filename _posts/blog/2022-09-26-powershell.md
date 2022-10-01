@@ -131,11 +131,9 @@ Property values listed inside of braces are nested objects.To view specific valu
 ```powershell
 $vm.OSProfile | Select-Object -Property ComputerName,AdminUserName
 ```
-The OSProfile interface Specifies the operating system settings for the virtual machine.
+The **OSProfile** interface Specifies the operating system settings for the virtual machine.
 
-
-
-To get the details of a Virtual Machine run the following command:
+To get the details of any other Virtual Machine run the following command:
 ```powershell
 $vm_details = Get-AzVM -Name "vm_name" -ResourceGroup "Resource_group_name"
 ```
