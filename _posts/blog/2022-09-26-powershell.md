@@ -126,6 +126,14 @@ You can inspect the job and progress at any time using the Get-Job cmdlet.
 ```powershell
 Get-Job $vm
 ```
+Once the VM is ready, we can view the results in the Azure Portal or by inspecting the $vm variable.
+Property values listed inside of braces are nested objects.To view specific values in these nested you can run the following command.
+```powershell
+$vm.OSProfile | Select-Object -Property ComputerName,AdminUserName
+```
+The OSProfile interface Specifies the operating system settings for the virtual machine.
+
+
 
 To get the details of a Virtual Machine run the following command:
 ```powershell
@@ -146,5 +154,9 @@ Restart-AzVM -ResourceGroupName $RG.Name -Name $vm.Name
 ```
 Remove the VM:
 ```powershell
-Remove-AzVM -ResourceGroupName $RG.Name -Name $vm.Name
+Remove-AzVM -ResourceGroupName $RG.Name -Name $vm.Name -Force -AsJob
+```
+To remove all resources in a resource group run the following command.
+```powershell
+Remove-AzResourceGroup -Name "ResourceGroupName" -Force -AsJob
 ```
