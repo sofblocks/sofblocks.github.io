@@ -138,6 +138,7 @@ To get the details of any other Virtual Machine run the following command:
 $vm_details = Get-AzVM -Name "vm_name" -ResourceGroup "Resource_group_name"
 ```
 The following command are used to manage the VM's
+
 Start the VM:
 ```powershell
 Start-AzVM -ResourceGroupName $RG.Name -Name $vm.Name
