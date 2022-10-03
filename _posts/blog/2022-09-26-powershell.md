@@ -83,7 +83,7 @@ To create a VM, start by creating the Azure resource group using New-AzResourceG
 ```powershell
 > $RG = New-AzResourceGroup -Name "name_of_the_resource_group" -Location "Location"  
 ---
-> $RG = New-AzResourceGroup -Name "production" -location "EastUs"
+> $Rg = New-AzResourceGroup -Name "Production" -Location "southafricanorth"
 ```
 ![upload-image]({{ "/assets/imgs/notes/loc.png" | relative_url }})
 While selecting a location in the Azure portal you just have to select from the drop down menu. However, in PowerShell you have to know exactly what the name of the data center is and whether it supports the resource you are going to deploy.
@@ -103,10 +103,10 @@ Get-AzLocation | ? {$_.Location -eq "eastasia"} | select Providers
 
 Next, you'll create a virtual network followed by a virtual network subnet.
 ```powershell
-$Vnet = New-AzVirtualNetwork -ResourGroup $RG.Name -Location $RG.Location -Name "Vnet" -AddressPrefix '10.0.0.0/16' 
+$Vnet = New-AzVirtualNetwork -Name "prodVnet" -ResourceGroupName $Rg.ResourceGroupName -Location $Rg.Location -AddressPrefix "10.0.0.0/16" 
 ```
 ```powershell
-$subnet = New-AzVirtualNetworkSubnetConfig -Name "subnet" -VirtualNetwork $Vnet.Name  -AddressPrefix '10.0.0.0/24' 
+$Subnet = Add-AzVirtualNetworkSubnetConfig -Name "ProdSubnet" -VirtualNetwork $Vnet -AddressPrefix "10.0.0.0/24"
 ```
 Next update the Virtual Network to pick the changes.
 ```powershell
@@ -115,11 +115,11 @@ $Vnet | Set-AzVirtualNetwork
 
 ### Creating a Public IP Address
 ```powershell
-$PIP = New-AzPublicIpAddress -Name "name_of_the_pulicIP" -ResourceGroupName $RG.Name -AllocationMethod Dynamic -Location $RG.Location
+$Pip = New-AzPublicIpAddress -Name "ProdIP" -ResourceGroupName $Rg.ResourceGroupName -AllocationMethod Dynamic -Location $Rg.Location
 ```
-Next, you’ll create another variable for the creation the Azure VM using New-AzVM cmdlet. We'll go ahead and pass the variables that we have created.
+Next, we will create another variable for the creation the Azure VM using New-AzVM cmdlet. We'll go ahead and pass the variables that we have created.
 ```powershell
-$vm = New-AzVM -ResourceGroup $RG.Name -Location $RG.Location -VirtualNetwork $Vnet.Name -Subnet $subnet.Name  -PublicIpAddressName $PIP.Name -OpenPorts 80,3389 -Name "VmName" -AsJob 
+$Vm = New-AzVm -Name "ProdVm"  -ResourceGroupName $Rg.ResourceGroupName -Location $Rg.Location -VirtualNetworkName $Vnet.Name -SubnetName $Subnet.Subnets.Name -OpenPorts 80, 3389 -PublicIpAddressName $Pip.Name  -AsJob  
 ```
 The AsJob switch runs the command in the background this gives you space and time to run other commands
 in powershell. Such as creation of other resources in Azure.
@@ -130,13 +130,19 @@ Get-Job $vm
 Once the VM is ready, we can view the results in the Azure Portal or by inspecting the $vm variable.
 Property values listed inside of braces are nested objects.To view specific values in these nested you can run the following command.
 ```powershell
-$vm.OSProfile | Select-Object -Property ComputerName,AdminUserName
+$vm.OSProfile | Select ComputerName,AdminUserName
 ```
 The **OSProfile** interface Specifies the operating system settings for the virtual machine.
 
 To get the details of any other Virtual Machine run the following command:
 ```powershell
-$vm_details = Get-AzVM -Name "vm_name" -ResourceGroup "Resource_group_name"
+Get-AzVm -Name $Vm.Name -ResourceGroupName $Rg.ResourceGroupName -Status
+```
+To get details of the Vm's Network interface run:
+```powershell
+$Vm | Get-AzNetworkInterface 
+$Vm | Get-AzNetworkInterface | Select -ExcludeProperty IpConfigurations | Select PrivateIpAddress
+$Pip| Select Name, IpAddress
 ```
 The following command are used to manage the VM's
 
@@ -160,6 +166,8 @@ To remove all resources in a resource group run the following command.
 ```powershell
 Remove-AzResourceGroup -Name "ResourceGroupName" -Force -AsJob
 ```
+Install-WindowsFeature -name Web-Server -IncludeManagementTools
+
 
 ### Get a list of resources that use Basic SKU in Azure?
 Microsoft has outlined that On 30 September 2025, Basic SKU public IP addresses will be retired in Azure.You can use this command to list all Public IP addresses in one subscription that are using the Basic SKU then upgrade them to standard SKU.
