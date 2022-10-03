@@ -159,3 +159,14 @@ To remove all resources in a resource group run the following command.
 ```powershell
 Remove-AzResourceGroup -Name "ResourceGroupName" -Force -AsJob
 ```
+
+### Get a list of resources that use Basic SKU in Azure?
+Microsoft has outlined that On 30 September 2025, Basic SKU public IP addresses will be retired in Azure.You can use this command to list all Public IP addresses in one subscription that are using the Basic SKU then upgrade them to standard SKU.
+```powershell
+Get-AzPublicIpAddress |? { $_.Sku.Name -eq 'Basic' }
+```
+You can also query the Resource Graph in order to get the corresponding Public IP addresses across all subscriptions in your tenant.
+```powershell
+Search-AzGraph -Query "resources | where type =~ 'Microsoft.Network/publicIPAddresses' | where sku.name =~ 'Basic'"
+```
+Note that you can only upgrade to Standard SKU if the IP address is disassociated and has static allocation method.
