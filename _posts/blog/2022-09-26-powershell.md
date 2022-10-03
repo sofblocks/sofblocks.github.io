@@ -166,7 +166,6 @@ To remove all resources in a resource group run the following command.
 ```powershell
 Remove-AzResourceGroup -Name "ResourceGroupName" -Force -AsJob
 ```
-Install-WindowsFeature -name Web-Server -IncludeManagementTools
 
 
 ### Get a list of resources that use Basic SKU in Azure?
