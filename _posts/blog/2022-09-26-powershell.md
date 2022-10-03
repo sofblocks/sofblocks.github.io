@@ -11,7 +11,7 @@ Powershell can also be used to script, automate, and manage workloads running on
 
 In this post we will be looking on how to get started with Azure Powershell but first we must understand some of its components. 
 
-What is  **CMDLETS**: A cmdlet is a single lightweight command that performs an action.   
+What is  **CMDLET**: A cmdlet is a single lightweight command that performs an action.   
 What is a **Module**: A module is a set of related functionalities and resources that are grouped together. 
 
 ## Exploring PowerShell’s cmdlets
@@ -31,8 +31,8 @@ Get-help "name of the command"
 
 The above command returns basic information however you can add the "full" flag to return every information about the cmdlet or the "example" flag to list only the examples of the cmdlet.
 ```powershell
-    Get-Command "name of the command" -Full
-    Get-Command "name of the command" -Examples
+    Get-Help "name of the command" -Full
+    Get-Help "name of the command" -Examples
 ```
 
 Listing parameters of a cmdlet.
@@ -170,3 +170,13 @@ You can also query the Resource Graph in order to get the corresponding Public I
 Search-AzGraph -Query "resources | where type =~ 'Microsoft.Network/publicIPAddresses' | where sku.name =~ 'Basic'"
 ```
 Note that you can only upgrade to Standard SKU if the IP address is disassociated and has static allocation method.
+
+### Disconnect a connected Azure account and removes all credentials and contexts associated with that account.
+
+```powershell
+Remove-AzAccount
+```
+The above command logs out of the Azure account associated with the current context. To log out a particular user, use the following command.
+```powershell
+ Disconnect-AzAccount -Username 'user1@contoso.org'
+```
