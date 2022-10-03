@@ -85,6 +85,7 @@ To create a VM, start by creating the Azure resource group using New-AzResourceG
 ---
 > $RG = New-AzResourceGroup -Name "production" -location "EastUs"
 ```
+![upload-image]({{ "/assets/imgs/notes/loc.png" | relative_url }})
 While selecting a location in the Azure portal you just have to select from the drop down menu. However, in PowerShell you have to know exactly what the name of the data center is and whether it supports the resource you are going to deploy.
 To list all the available regions run the following command.
 ```powershell
