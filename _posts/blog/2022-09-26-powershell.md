@@ -63,7 +63,7 @@ Next restart the session. Now if you press the tab key it will be equivalent to 
 ### Installing the powershell module.
 
 Now that we know some basic commands and useful shortcut keys, let's get our hands dirty. First we shall start by installing one of Microsoft's powershell modules for managing Azure Active Directory. The modules are MsOnline, AzureAD and Az PowerShell.
-- **Msonline** – This is the Original and first PowerShell module release that allowed Azure AD management using PowerShell.
+- **MsOnline** – This is the Original and first PowerShell module release that allowed Azure AD management using PowerShell.
 - **AzureAD** – The second released and recommended module, run only on Windows.
 - **Az PowerShell** – Run on all platforms (PowerShell 7) however it is missing many options and doesn’t allow full management of Azure AD.
 
