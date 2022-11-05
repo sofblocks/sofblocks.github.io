@@ -77,13 +77,13 @@ Navigate to Enterprise applications and select our app, then click on properties
 
 ![upload-image]({{ "/assets/imgs/notes/properties.png" | relative_url }})
 
-Now navigate to users and group and select add user/group select the user you want to add and assign the appropiate roles created previously.
+Now navigate to users and group and select add user/group select the user you want to add and assign the appropriate roles created previously.
 
 ![upload-image]({{ "/assets/imgs/notes/adduser.png" | relative_url }})
 
 ## Sophos Firewall Configuration
 
-Navigate to your Sophos Firewall webconsole and click on authentication section. Select the servers tab and click add. Select Azure AD SSO from the server type list.Fill in the details using the information we got from Azure Portal (application ID, Oject ID, Tenenat ID and the secret key).
+Navigate to your Sophos Firewall web console and click on authentication section. Select the servers tab and click add. Select Azure AD SSO from the server type list.Fill in the details using the information we got from Azure Portal (application ID, Oject ID, Tenenat ID and the secret key).
 
 ![upload-image]({{ "/assets/imgs/notes/sophos.png" | relative_url }})
 
