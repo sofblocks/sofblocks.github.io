@@ -63,16 +63,17 @@ Make sure you copy the secret value and store it somewhere safe, as it won’t b
 App roles are basically tags associated with a user, group or an application. These tags ultimately get translated into permissions, during authorization. Note that these roles are specific to the application. The role claims for one application are not sent to another application.
 
 The roles we are going to create will allow us to control access and assign appropriate permissions to users signing into the firewall. Should we decide to remove the application from the Azure AD tenant, the roles will go away.
-click on App roles and then Create app role. Provide a display name, choose the both(Users/Groups + Applications) for the member types, provide the value for our role, provide a description, check the enable this app role checkbox, and click the Apply button.
+
+Click on App roles and then Create app role. Provide a display name, choose the both(Users/Groups + Applications) for the member types, provide the value for our role, provide a description, check the enable this app role checkbox, and click the Apply button.
 Remember the value provided for the role must match with the one that will be provided in the Sophos Firewall.
 
 ![upload-image]({{ "/assets/imgs/notes/approle.png" | relative_url }})
 
 You can add up more different roles.
 
-### Assigning Users to Our New Roles
+### Assigning Users to the New Roles
 Before we assign roles to our users, we must enable assignment required option in our newly created app.
-Navigate to Enterprise applications and select our app, then click on properties section. Look for the Assignent required property and toggle it to yes.
+Navigate to Enterprise applications and select our app, then click on properties section. Look for the Assignment required property and toggle it to yes.
 
 ![upload-image]({{ "/assets/imgs/notes/properties.png" | relative_url }})
 
