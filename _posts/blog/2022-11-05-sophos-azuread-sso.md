@@ -111,7 +111,7 @@ On Sophos Firewall under authentication section select services and scroll down 
 
 ![upload-image]({{ "/assets/imgs/notes/tick.png" | relative_url }})
 
-Logout and you will now see SSO is now enabled on the log on screen.
+Logout of the application and SSO is now enabled on the log on screen.
 
 ![upload-image]({{ "/assets/imgs/notes/logon.png" | relative_url }})
 
