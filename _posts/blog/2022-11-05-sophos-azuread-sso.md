@@ -5,7 +5,6 @@ permalink: /sophos-azuread-sso/
 toc: true
 tags: [Azure, SSO, Firewall, Sophos, Authentication]
 header: 
-    overlay_image: "assets/imgs/notes/sso.webp"
     header:  "assets/imgs/notes/sso.webp"
     teaser: "assets/imgs/notes/sso.webp"
     og_image: "assets/imgs/notes/sso.webp"
