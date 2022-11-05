@@ -19,26 +19,29 @@ Below are some of the protocols and standards associated with SSO are:
 - Kerberos
 - Smart card authentication
 
-What they are and how they work would be a blog post for another day. Today we just want to look at how to intergrate Azure AD SSO with Sophos Firewall to authenticate Azure AD users signing into the web adim console.
+What they are and how they work would be a blog post for another day. Today we will just be looking at how to intergrate Azure AD SSO with Sophos Firewall to authenticate Azure AD users signing into the web adim console.
 
 ## Configuring App Registration in Azure.
 
 We will start off by registering an app in Azure and assign permissions accordingly to facilitate authentication and authorization between Sophos firewall and Azure AD. This is to establish a trust relationship between Sophos Firewall and the Microsoft identity platform in other words Sophos will trust Microsoft and not Vice versa.
 
-### Creating a New Azure App Registration
+### New Azure App Registration
 After logging into the Azure Portal, navigate to Azure AD and App registrations, then click new registration as seen in the screenshot shown below.
+
 ![upload-image]({{ "/assets/imgs/notes/appreg.png" | relative_url }})
 
 Provide the details and select web under redirection URL.
 ![upload-image]({{ "/assets/imgs/notes/appurl.png" | relative_url }})
 
-After creation, note down the application ID, Object ID and tenant ID as we are going to use them later in firewall configuration.
+After the app creation, note down the application ID, Object ID and tenant ID as we are going to use them later in firewall configuration.
 
-### Assinging API permissions
-The next step will be assinging API permissions. This is where you will define the configured permissions that allow an account to read or write data depending on the allowed authorizations. In our case we are only going to need [User.Read.All] and [Group.Read.All] permissions from the Microsoft Graph API.
+### Assigning API permissions
+The next step will be assigning API permissions. This is where you will define the configured permissions that allow an account to read or write data depending on the allowed authorizations. In our case we are only going to need [User.Read.All] and [Group.Read.All] permissions from the Microsoft Graph API.
+
 Microsoft Graph API is a RESTful web API that enables you to access Microsoft Cloud service resources.
 
-Click on the newly created app and select API permisions, click add permissions → Select Microsoft Graph → Delegated Permisions.
+Click on the newly created app and select API permissions, click add permissions → Select Microsoft Graph → Delegated permissions.
+
 ![upload-image]({{ "/assets/imgs/notes/graphapi.png" | relative_url }})
 
 Select and add User.Read.All  and Group.Read.All permissions.
