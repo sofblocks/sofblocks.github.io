@@ -127,3 +127,6 @@ References:
 [Sophos Firewall](https://docs.sophos.com/nsg/sophos-firewall/19.0/Help/en-us/webhelp/onlinehelp/index.html/)
 
 [Microsoft Documentation](https://learn.microsoft.com/en-us/power-apps/developer/data-platform/walkthrough-register-app-azure-active-directory)
+
+
+

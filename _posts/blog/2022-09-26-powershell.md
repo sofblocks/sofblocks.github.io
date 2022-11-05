@@ -194,3 +194,8 @@ The above command logs out of the Azure account associated with the current cont
 ```powershell
  Disconnect-AzAccount -Username 'user1@contoso.org'
 ```
+
+
+References:
+
+[Microsoft Documentation](https://learn.microsoft.com/en-us/powershell/azure/?view=azps-9.1.0)
