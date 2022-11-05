@@ -6,6 +6,8 @@ tags: [Active Directory, mim, LLMNR, kerberos. IPv6]
 toc: true
 header: 
     teaser: "assets/imgs/notes/attackad.PNG"
+    header: "assets/imgs/notes/attackad.PNG"
+    og_image: "assets/imgs/notes/attackad.PNG"
 ---
 
 ## What is Active Directory
