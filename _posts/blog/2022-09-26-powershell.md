@@ -4,7 +4,8 @@ title: "Azure Powershell"
 permalink: /azpowershell/
 tags: [Azure, Powershell, Scripting]
 toc: true
-teaser: "assets/imgs/notes/azpw.png"
+header: 
+    teaser: "assets/imgs/notes/azpw.png"
 ---
 
 PowerShell is a command-based shell and scripting language used for task automation and as a configuration framework tool. PowerShell runs on Windows, Linux, and macOS operating systems. 
