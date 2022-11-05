@@ -9,6 +9,8 @@ toc: true
 PowerShell is a command-based shell and scripting language used for task automation and as a configuration framework tool. PowerShell runs on Windows, Linux, and macOS operating systems. 
 Powershell can also be used to script, automate, and manage workloads running on cloud platforms such as GCP and Azure because of its well laid out syntax which makes it easy to learn and use.
 
+![upload-image]({{ "/assets/imgs/notes/azpw.png" | relative_url }})
+
 In this post we will be looking on how to get started with Azure Powershell but first we must understand some of its components. 
 
 What is  **CMDLET**: A cmdlet is a single lightweight command that performs an action.   
