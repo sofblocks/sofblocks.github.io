@@ -1,7 +1,7 @@
 ---
 layout: single
 title: "Azure Powershell"
-permalink: /azpowershell/
+permalink: /azurepowershell/
 tags: [Azure, Powershell, Scripting]
 toc: true
 header: 
