@@ -22,13 +22,13 @@ What they are, how they work that would be a blog post for another day. Today we
 
 ## Configuring App Registration in Azure.
 
-We will start off by registering an app in Azure and assign permissions accordingly to facilitate authentication and authorization between Sophos firewall and Azure AD. This is to establish a trust relationship between Sophos Firewall and the Microsoft identity platform in other words Sophos will trust Microsoft and not Vice versa.'
+We will start off by registering an app in Azure and assign permissions accordingly to facilitate authentication and authorization between Sophos firewall and Azure AD. This is to establish a trust relationship between Sophos Firewall and the Microsoft identity platform in other words Sophos will trust Microsoft and not Vice versa.
 
 ### Creating a New Azure App Registration
-After logging into the Azure Portal, navigate to Azure AD and App registrations and click new registration as seen in the screenshot shown below.
+After logging into the Azure Portal, navigate to Azure AD and App registrations, then click new registration as seen in the screenshot shown below.
 ![upload-image]({{ "/assets/imgs/notes/appreg.png" | relative_url }})
 
-Fill in the details and under redirection URL select web.
+Provide the details and select web under redirection URL.
 ![upload-image]({{ "/assets/imgs/notes/appurl.png" | relative_url }})
 
 After creation, note down the application ID, Object ID and tenant ID as we are going to use them later in firewall configuration.
