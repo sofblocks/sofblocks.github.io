@@ -10,7 +10,7 @@ Single sign-on (SSO) is a technology which combines several different applicatio
 
 A good example is when a user logs into a Google account and they become automatically authenticated to other linked services, such as Gmail and YouTube, without having to sign in again to those services. SSO is built on the concept of federated identity, which is the sharing and verifying of login credentials between trusted service and identity providers.
 
-A service provider is a vendor that provides IT solutions and/or services to end users and organizations such as an application or website. An identity provider (IdP) on the other end is a service that stores and manages digital identities. A good examples would be Azure AD account and Google Workspace.
+A service provider is a vendor that provides IT solutions and/or services to end users and organizations such as an application or website. An identity provider (IdP) on the other end is a service that stores and manages digital identities. A good examples would be Azure AD and Google Workspace.
 
 Below are some of the protocols and standards associated with SSO are:
 - Security Access Markup Language (SAML)
