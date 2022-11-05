@@ -18,7 +18,8 @@ Below are some of the protocols and standards associated with SSO are:
 - OpenID Connect (OIDC)
 - Kerberos
 - Smart card authentication
-What they are, how they work that would be a blog post for another day. Today we just want to look at how to intergrate Azure AD SSO with Sophos Firewall to authenticate Azure AD users signing into the web adim console.
+
+What they are and how they work would be a blog post for another day. Today we just want to look at how to intergrate Azure AD SSO with Sophos Firewall to authenticate Azure AD users signing into the web adim console.
 
 ## Configuring App Registration in Azure.
 
