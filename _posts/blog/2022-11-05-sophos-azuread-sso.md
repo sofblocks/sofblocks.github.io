@@ -7,8 +7,11 @@ tags: [Azure, SSO, Firewall, Sophos, Authentication]
 ---
 
 Single sign-on (SSO) is a technology which combines several different application login screens into one regardless of the domain, platform, or technology they are using. With SSO, a user only has to enter their login credentials (username, password, etc.) one time on a single page to access all of their SaaS applications. This eases the management of multiple usernames and passwords across various accounts and services.
+
 A good example is when a user logs into a Google account and they become automatically authenticated to other linked services, such as Gmail and YouTube, without having to sign in again to those services. SSO is built on the concept of federated identity, which is the sharing and verifying of login credentials between trusted service and identity providers.
+
 A service provider is a vendor that provides IT solutions and/or services to end users and organizations such as an application or website. An identity provider (IdP) on the other end is a service that stores and manages digital identities. A good examples would be Azure AD account and Google Workspace.
+
 Below are some of the protocols and standards associated with SSO are:
 - Security Access Markup Language (SAML)
 - Open Authorization (OAuth)
@@ -106,6 +109,10 @@ On Sophos Firewall under authentication section select services and scroll down 
 Logout and you will now see SSO is now enabled on the log on screen.
 
 ![upload-image]({{ "/assets/imgs/notes/logon.png" | relative_url }})
+
+The screenshot shown below shows a user who has logged into the firewall using SSO.
+
+![upload-image]({{ "/assets/imgs/notes/finallog.png" | relative_url }})
 
 ## Conclusion
 Azure AD integration enables dynamic role and group access management, you can add or remove access to administer the firewall in Azure without changing anything on the firewall.
