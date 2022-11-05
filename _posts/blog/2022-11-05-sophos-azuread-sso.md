@@ -83,13 +83,14 @@ Now navigate to users and group and select add user/group select the user you wa
 
 ## Sophos Firewall Configuration
 
-Navigate to your Sophos Firewall web console and click on authentication section. Select the servers tab and click add. Select Azure AD SSO from the server type list.Fill in the details using the information we got from Azure Portal (application ID, Oject ID, Tenenat ID and the secret key).
+Navigate to your Sophos Firewall web console and click on authentication section. Select the servers tab and click add. Select Azure AD SSO from the server type list. Fill in the details using the information we got from Azure Portal (application ID, Object ID, Tenant  ID and the secret key).
 
 ![upload-image]({{ "/assets/imgs/notes/sophos.png" | relative_url }})
 
-Under fallback user group section, select open - The firewall assigns this group if it can't find a matching user group locally.
-Under Role Mapping section;, Input the exact value you specified for the role group in Azure Portal. 
-And Select the profile you want in our case it is Administrator. Finally Test the connection.
+Under fallback user group section, select open group. The firewall assigns this group if it can't find a matching user group locally.
+
+Under Role Mapping section, Input the exact value you specified for the role group in Azure Portal. 
+Select the profile you want in our case it is Administrator. Finally Test the connection.
 
 ![upload-image]({{ "/assets/imgs/notes/rolesec.png" | relative_url }})
 
