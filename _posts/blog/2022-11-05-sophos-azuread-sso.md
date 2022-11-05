@@ -50,7 +50,7 @@ The Grant admin consent for Default directory exists so that an individual user 
 ![upload-image]({{ "/assets/imgs/notes/admingrant.png" | relative_url }})
 
 ### Certificates and Secrets
-Head over to  certificates and sectrets section and generate a new client secret that would be passed in during the authentication process. 
+Head over to  certificates and secrets section and generate a new client secret that would be passed in during the authentication process. 
 
 ![upload-image]({{ "/assets/imgs/notes/certandsecret.png" | relative_url }})
 
