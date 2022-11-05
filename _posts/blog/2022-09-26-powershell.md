@@ -6,6 +6,8 @@ tags: [Azure, Powershell, Scripting]
 toc: true
 header: 
     teaser: "assets/imgs/notes/azpw.png"
+    header:  "assets/imgs/notes/azpw.png"
+    og_image: "assets/imgs/notes/sso.webp"
 ---
 
 PowerShell is a command-based shell and scripting language used for task automation and as a configuration framework tool. PowerShell runs on Windows, Linux, and macOS operating systems. 

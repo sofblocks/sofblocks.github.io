@@ -32,7 +32,7 @@ We will start off by registering an app in Azure and assign permissions accordin
 ### New Azure App Registration
 After logging into the Azure Portal, navigate to Azure AD and App registrations, then click new registration as seen in the screenshot shown below.
 
-![upload-image]({{ "/assets/imgs/notes/logon.png" | relative_url }})
+
 
 
 ![upload-image]({{ "/assets/imgs/notes/appreg.png" | relative_url }})
