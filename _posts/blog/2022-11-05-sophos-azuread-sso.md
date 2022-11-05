@@ -3,7 +3,6 @@ layout: single
 title: "Azure AD Single Sign On (SSO) - Sophos Firewall"
 permalink: /sophos-azuread-sso/
 toc: true
-toc_sticky: true
 tags: [Azure, SSO, Firewall, Sophos, Authentication]
 header: 
     header:  "assets/imgs/notes/sso.webp"
