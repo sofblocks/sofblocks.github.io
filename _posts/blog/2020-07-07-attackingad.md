@@ -5,7 +5,7 @@ permalink: /ad-attacks/
 tags: [Active Directory, mim, LLMNR, kerberos. IPv6]
 toc: true
 header: 
-    teaser: "assets/imgs/notes/attackad.png"
+    teaser: "assets/imgs/notes/attackad.PNG"
 ---
 
 ## What is Active Directory
