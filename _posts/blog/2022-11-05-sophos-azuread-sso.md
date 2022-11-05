@@ -4,11 +4,11 @@ title: "Azure AD Single Sign On (SSO) - Sophos Firewall"
 permalink: /sophos-azuread-sso/
 toc: true
 tags: [Azure, SSO, Firewall, Sophos, Authentication]
+header: 
+    teaser: "assets/imgs/notes/sso.webp"
 ---
 
 Single sign-on (SSO) is a technology which combines several different application login screens into one regardless of the domain, platform, or technology they are using. With SSO, a user only has to enter their login credentials (username, password, etc.) one time on a single page to access all of their SaaS applications. This eases the management of multiple usernames and passwords across various accounts and services.
-
-![upload-image]({{ "/assets/imgs/notes/sso.webp" | relative_url }})
 
 A good example is when a user logs into a Google account and they become automatically authenticated to other linked services, such as Gmail and YouTube, without having to sign in again to those services. SSO is built on the concept of federated identity, which is the sharing and verifying of login credentials between trusted service and identity providers.
 
