@@ -103,7 +103,6 @@ Click on add a platform and select web, paste the copied url in the Redirect URl
 
 ![upload-image]({{ "/assets/imgs/notes/url1.png" | relative_url }})
 
-
 ![upload-image]({{ "/assets/imgs/notes/url2.png" | relative_url }})
 
 ![upload-image]({{ "/assets/imgs/notes/url3.png" | relative_url }})
