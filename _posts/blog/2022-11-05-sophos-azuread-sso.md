@@ -32,12 +32,10 @@ We will start off by registering an app in Azure and assign permissions accordin
 ### New Azure App Registration
 After logging into the Azure Portal, navigate to Azure AD and App registrations, then click new registration as seen in the screenshot shown below.
 
-
-
-
 ![upload-image]({{ "/assets/imgs/notes/appreg.png" | relative_url }})
 
-Provide the details and select web under redirection URL.
+Provide the details and select web under redirection URL. Redirection URL is the location where the authorization server (Azure AD) is going to send the user once the app has been successfuly been authorized.
+
 ![upload-image]({{ "/assets/imgs/notes/appurl.png" | relative_url }})
 
 After the app creation, note down the application ID, Object ID and tenant ID as we are going to use them later in firewall configuration.
