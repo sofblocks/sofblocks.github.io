@@ -171,7 +171,7 @@ The 3 objects with global admin role are:
 - kratos@Default Directory
 - …ITOps-App@Default Directory
 
-The first one is a user account object, it's the owner of the tenant.  This is the person who signed up for the azure subscription and who by default is given the global admin role.
+The first one is a user account object, this is the owner of the tenant.  The person who signed up for the azure subscription and who by default is given the global admin role.
 
 NOTE: The username/ UserPrincipalName appears to have the #EXT# in it because the user has been sourced from other identity providers. In this case, the user was added using their Microsoft Account (MSA).
 
