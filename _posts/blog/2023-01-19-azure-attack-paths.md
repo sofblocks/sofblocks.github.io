@@ -16,17 +16,17 @@ Most of the existing security solutions products produce countless lists of aler
 
 Adversaries on the other hand think in graphs which is a multidimensional approach. Their main goal is to get hold of the organization's most valuable assets using any available attack paths they can find. Abusing these attack paths which mostly are a result of misconfigurations is more dangerous than other attacks since it's not about exploiting anything that can be patched. 
 
-A Gartner survey found that misconfigurations cause **80%** of all data security breaches.
+A Gartner survey once found that misconfigurations cause **80%** of all data security breaches.
 
 To effectively prevent misconfigurations and protect the tenant, organizations must understand its whole structure and components, hence real-time mapping of the entire tenant is necessary.
 
-Thanks to SpectreOps tools  [Bloodhound](https://bloodhoundenterprise.io/) and [Azurehound](https://bloodhound.readthedocs.io/en/latest/data-collection/azurehound.html) which have reshaped how Pentesters and Read Teamers execute engagements.  Using graphs you are able to see mappings starting from the most critical assets and you can easily identify risky paths. 
+Thanks to SpectreOps tools  [Bloodhound](https://bloodhoundenterprise.io/) and [Azurehound](https://bloodhound.readthedocs.io/en/latest/data-collection/azurehound.html) which have reshaped how Pentesters and Red Teamers execute engagements.  Using graphs you are able to see mappings starting from the most critical assets in your tenant and you can easily identify the risky paths. 
 
 BloodHound uses graph theory to reveal the hidden and often unintended relationships within an Active Directory or Azure environment. It continuously and comprehensively maps all Attack Paths in the environment. It allows you to shut down attack paths before they are found and exploited by adversaries.
 
 AzureHound is a BloodHound data collector for Microsoft Azure via the MS Graph and Azure REST APIs.
 
-In this blog post, I’m going to demonstrate how to use the above-mentioned tools to map out all the possible attack paths in my azure tenant.
+In this blog post, I’m going to demonstrate how to use the above-mentioned tools to map all the possible attack paths in my azure tenant.
 
 ### Installing Bloodhound:
 
@@ -38,13 +38,13 @@ Install Bloodhound from the apt repository with:
 sudo apt update && sudo apt install -y bloodhound
 ```
 
-After installation completes, start neo4j with the following command:
+After the installation completes, start neo4j with the following command:
 
 ```powershell
 sudo neo4j console
 ```
 
-Change the default credentials for neo4j. Navigate to localhost:7474
+Changing the default credentials for neo4j. Navigate to localhost:7474
  and log in with the default credentials:
 
 ```powershell
@@ -64,18 +64,17 @@ Launch Bloodhound with the new credentials.
 
 ### Installing AzureHound:
 
-Clone this repository https://github.com/BloodHoundAD/AzureHound then, cd into the directory you just cloned and locate the binary called azurehound:
+Clone this repository [Azurehound](https://github.com/BloodHoundAD/AzureHound) then, cd into the directory you just cloned and locate the binary called azurehound:
 
-### ****Collecting Data with AzureHound****
+### Collecting Data with AzureHound
 
 You need to first authenticate to your azure environment before you start collecting data using azurehoud.  We will be using a refresh token which is one of the many authentication flows supported by this tool. However, you can as well as use a username/password combo, a JWT, a service principal secret, or a service principal certificate.
 
-The reason we are using refresh tokens is to avoid the MFA and CAP restrictions that may have been applied to the user account that we will be using to authenticate to azure.
+We are using refresh tokens because the authentication process may fail to work especially if the user account being used has MFA and CAP restrictions.
 
 ### Generating a Refresh Token.
 
 We will use a PowerShell script to perform Azure AD device code flow and generate a refresh token.
-
 Open a PowerShell window on any system and paste the following:
 
 ```powershell
@@ -97,7 +96,7 @@ $authResponse
 
 The client id is the id of the Azure Powershell application that has delegated permissions to perform what the script is meant to do.
 
-The resource defines where the access token will be valid. In this case,  the token will be used to access Microsoft Graph API
+The resource defines where the access token will be valid. In this case,  the token will be used to access Microsoft Graph API.
 
 Running the above script will start a new sign-in process and the output will contain a user_code and device_code. Now, open a browser where your AzureAD user is either already logged on or can log on to Azure. In this browser, navigate to [https://microsoft.com/devicelogin](https://microsoft.com/devicelogin)
 
@@ -120,7 +119,7 @@ $Tokens = Invoke-RestMethod `
 $Tokens
 ```
 
-The above code is for obtaining access tokens. The output will include several tokens including a refresh_token. It will start with characters similar to “0.ARwA6Wg…”. Now you are ready to run AzureHound. Take the refresh token and supply it to AzureHound using the -r switch:
+The above code is for obtaining access tokens. The output will include several tokens including a refresh_token. It will start with characters similar to “0.AXMAMe…”. Now you are ready to run AzureHound. Take the refresh token and supply it to AzureHound using the -r switch:
 
 ```powershell
 ./azurehound -r "0.AXMAMe..." list --tenant "753a0bc5-..." -o output.json
@@ -130,15 +129,15 @@ Apart from the flag ‘’list” there are other several optional flags that le
 
 See the full documentation [here](https://bloodhound.readthedocs.io/en/latest/data-collection/azurehound-all-flags.html).
 
-You can supply either the tenant ID or the primary domain name on the tenant flag.
+You can supply either the tenant ID or the primary domain name on the "tenant" flag.
 
-The o flag is for the output file which is a JSON-type file containing the tenant information extracted by running the command. 
+The "o" flag is for the output file which is a JSON-type file containing the tenant information extracted by running the command. 
 
 The screenshot below shows where you can obtain the above information in the Azure portal.
 
 ![upload-image]({{ "/assets/imgs/notes/portal.png" | relative_url }})
 
-The command will attempt to list all possible data from that particular tenant, but you can also use that same refresh token to target any other tenant your user has access to.
+The command will attempt to list all possible data from the target tenant, but you can also use that same refresh token to target any other tenant your user has access to.
 
 ![upload-image]({{ "/assets/imgs/notes/azurehound.png" | relative_url }})
 
@@ -146,52 +145,51 @@ The command will attempt to list all possible data from that particular tenant, 
 ### Uploading the JSON file to Bloodhound GUI
 
 After you log in to the bloodhound GUI select the upload option from the right-hand side of the interface.
-
-Navigate to the location where you have saved the output JSON file select and upload it. Give it some time to finish up the upload process.
+Navigate to the location where you have saved the output JSON file select and upload it.
 
 ![upload-image]({{ "/assets/imgs/notes/progress.png" | relative_url }})
 
-Once the upload is complete, click on the drop-down located on the upper top left side of the screen. You will see all information that has been extracted from the target tenant including a breakdown of all the azure objects that are present in the tenant.
+Once the upload is complete, click on the drop-down located on the upper top left side of the screen. There will be a summary display of information extracted from the target tenant including a breakdown of all the azure objects that are present in the tenant.
 
 ![upload-image]({{ "/assets/imgs/notes/bhound.png" | relative_url }})
 
-So let’s start performing a security audit of the subject tenant and will start with the Global administrator role. A user with this role has access to all administrative features and can control the entire tenant.
+So let’s start performing a security audit of the subject tenant and will start with the Global Administrator role. A user with this role has access to all administrative features and can control the entire tenant.
 
 From the search, area type and select “global administrator”.  Click on the node that will appear on the screen.
 
 ![upload-image]({{ "/assets/imgs/notes/gb.png" | relative_url }})
 
-The left-hand side panel shows information about the selected global admin role. Down in the assignment section, we can see that there are currently 3 active assignments. This basically means that we have 3 objects that have been assigned this role.
+The left-hand side panel shows information about the selected global admin role. Down in the assignment section, we can see that there are currently 3 active assignments. This basically means that we have 3 objects that have been assigned this to role.
 
-Let’s click on the property to see what these objects are.
+Click on the property to see what these objects are.
 
 ![upload-image]({{ "/assets/imgs/notes/gap.png" | relative_url }})
 
-The 3 Objects with global admin role are:
+The 3 objects with global admin role are:
 
 - kanaaft_gmail_com#EXT#…
 - kratos@Default Directory
 - …ITOps-App@Default Directory
 
-The first object, which is a user account object, is the owner of the tenant.  This is the person who signed up for the azure subscription and who by default is given the global admin role.
+The first one is a user account object, it's the owner of the tenant.  This is the person who signed up for the azure subscription and who by default is given the global admin role.
 
 NOTE: The username/ UserPrincipalName appears to have the #EXT# in it because the user has been sourced from other identity providers. In this case, the user was added using their Microsoft Account (MSA).
 
 The other two are application objects, one is called Kratos and the other is called ITOps-APP.
 
-A security engineer of the subject tenant might end up completing the auditing process at this point. Since they already know all of these 3 objects and they are certain that these are the only objects that should be having the global admin role.
+A security engineer of the subject tenant might end up completing the auditing process at this point. Since they already know all of these 3 objects and perhaps they are certain that these are the only objects that should be having the global admin role.
 
 However, when auditing we shouldn't only look at who has access to global admin roles without looking at who can get control of these objects.
 
-Luckily enough, Bloodhound has ways of auditing these objects that have access to these highest roles in azure.
+Bloodhound comes to the rescue, with ways of auditing these objects.
 
 ### Analysis of Tenant Objects
 
 The information that is displayed on the left-hand side panel upon clicking on any of the three object nodes, contains sections called Inbound Object Control and Outbound Object Control. 
 
-The Inbound section show who can gain control over this particular object, while the Outbound section shows the objects that this particular object can gain control over. I hope that makes sense.
+The Inbound section shows who can gain control over this particular object, while the Outbound section shows the objects that this particular object can gain control over. I hope that makes sense.
 
-We will be concentrating a lot on the Inbound section, which is further divided into 3: 
+Let's concentrate on the Inbound section, which is further divided into 3: 
 
 - Explicit Object Controllers → Objects that directly have control over this object.
 - Unrolled Object Controllers → The *actual* number of principals that have control of this object through security group delegation.
@@ -199,17 +197,17 @@ We will be concentrating a lot on the Inbound section, which is further divided 
 
 ### Deeper analysis of Tenant Objects
 
-So if we click on the first object, that is the owner of the tenant we see that there are no inbound objects associated with it, however, that is not the case with the other two application objects.
+When we click on the first object (the owner of the tenant), we see that there are no inbound objects associated with it, however, that is not the case with the other two application objects.
 
 They appear to have transitive object controllers even though they don’t have any explicit or unrolled object controllers associated with them.
 
-So let us pick the ITOps-App and find out the transitive object controllers associated with it. 
+Let us pick the ITOps-App and find out the transitive object controllers associated with it. 
 
 Upon clicking on the transitive object controllers property, we get another beautiful graphical view of all objects in the tenant that can possibly have control over the ITOps-App object.
 
 ![upload-image]({{ "/assets/imgs/notes/tenant.png" | relative_url }})
 
-The are two objects that can have control of the ITOps-App. 
+The two objects that can have control of the ITOps-App are: 
 
 1. [kanaaaaftgmail.onmicrosoft.com](http://kanaaaaftgmail.onmicrosoft.com/) ITOps-App
 2. [jeffreybrown@kanaaaaftgmail.onmicrosoft.com](mailto:jeffreybrown@kanaaaaftgmail.onmicrosoft.com)
@@ -234,7 +232,7 @@ Jeffrey Brown’s user account has been assigned the Application Administrators 
 
 ### Generating Azure Client Secret:
 
-To demonstrate how Jeffrey Brown's user account can gain the global admin role we will first have to authenticate to the azure tenant using his credentials and then generate a new client secret for the Service Principal of the ITOps-App application.
+To demonstrate how Jeffrey Brown's user account can perform privilege escalation we will first have to authenticate to Azure tenant using his credentials and then generate a new client secret for the ITOps-App Service Principal.
 
 Will use Azure CLI Powershell module:
 
@@ -248,7 +246,7 @@ After a successful login, we will use the `az ad app credential reset` command t
 az ad sp credential reset --id "DBC9BCC9-CB5B-455C-B2AF-61803398E972" --append
 ```
 
-We supply the id flag with the object id of the service principal which you can obtain from the bloodhound graph by clicking the  ITOps-App application’s service principal node.
+We supply the "id" flag with the object id of the service principal which you can obtain from the bloodhound graph by clicking the  ITOps-App application’s service principal node.
 
 ![upload-image]({{ "/assets/imgs/notes/sp.png" | relative_url }})
 
@@ -258,7 +256,7 @@ By default, the command clears all passwords and keys, and lets the graph servic
 
 ### Authenticating to Azure as ITOps-App application’s service principal
 
-Using the new credentials generated from the previous command we will authenticate to the azure tenant as the ITOps-App application’s service principal.
+Using the newly generated credentials we will authenticate to the Azure tenant as the ITOps-App application’s service principal.
 
 ```powershell
 az login --service-principal -u $username -p $password --tenant $tenant --allow-no-subscriptions
@@ -272,9 +270,9 @@ Microsoft Graph provides a REST API that allows you to access and manage many Az
 
 The principal calling the MS Graph API must be authenticated and authorized to perform the requested actions on the objects specified in the request.
 
-To perform the action of adding a user to the global admin role we will use the Azure CLI command ****`az rest`. The command enables custom requests to the MS Graph API to be made.
+Let's use the Azure CLI command `az rest`. This command enables custom requests to MS Graph API be made.
 
-If no authentication argument is passed to the `az rest` command then it will automatically use the Azure Account you already logged in with which in our case is the ITOps-App application’s service principal.
+If no authentication argument is passed to the `az rest` command then it will automatically use the Azure account you already logged in with which in our case is the ITOps-App application’s service principal.
 
 ```powershell
 $Body="{'principalId':'3C1DF195-9D6F-4A00-96C9-FEB45D99A27F', 'roleDefinitionId': '62e90394-69f5-4237-9190-012177145e10', 'directoryScopeId': '/'}”
@@ -307,7 +305,7 @@ Azure AD and Azure resources are secured independently from one another. That is
 
 When you elevate your access, you will be assigned the [User Access Administrator](https://learn.microsoft.com/en-us/azure/role-based-access-control/built-in-roles#user-access-administrator) role in Azure at root scope (`/`). This allows you to view all resources and assign access to any subscription or management group in the directory.
 
-While signed in to the Azure portal as a global admin. Open Active Directory and select the properties section on the left-hand-side panel. Scroll all the way to the bottom of the blade then under Access management for Azure resources, set the toggle to **Yes** and click save.
+While signed in to the Azure portal as a global admin. Open Active Directory and select the properties section on the left-hand-side panel. Scroll all the way to the bottom of the blade then under Access management for Azure resources, set the toggle to **Yes** and click on save.
 
 ![upload-image]({{ "/assets/imgs/notes/default.png" | relative_url }})
 
@@ -317,14 +315,17 @@ After you sign out and sign back in to refresh your access. You should now have 
 
 ![upload-image]({{ "/assets/imgs/notes/useraccess.png" | relative_url }})
 
-In this article, I introduced SpectreOps tools  [Bloodhound](https://bloodhoundenterprise.io/) and [Azurehound](https://bloodhound.readthedocs.io/en/latest/data-collection/azurehound.html); I showed how they work together, and I provided step-by-step instructions on how you can use them to identify dangerous attack paths in an Azure tenant, which would be difficult to identify using manual methods.  Remember even the tiniest misconfiguration is an opportunity for bad actors to exploit your business environment.
+In this article, I introduced SpectreOps tools  [Bloodhound](https://bloodhoundenterprise.io/) and [Azurehound](https://bloodhound.readthedocs.io/en/latest/data-collection/azurehound.html). I showed how they work together, and I provided step-by-step instructions on how you can use them to identify dangerous attack paths in an Azure tenant, which would be difficult to identify using manual methods.  Remember even the tiniest misconfiguration is an opportunity for bad actors to exploit your business environment.
 
 The next part of this blog will be looking at how to identify and prevent privilege escalation attacks arising from these security misconfigurations.
 
 #### References:
 
 [Bloodhound](https://bloodhoundenterprise.io/)
+
 [Azurehound](https://bloodhound.readthedocs.io/en/latest/data-collection/azurehound.html)
+
 [Az Rest](https://learn.microsoft.com/en-us/cli/azure/reference-index?view=azure-cli-latest#az-rest)
+
 [Microsoft Documentation](https://learn.microsoft.com/en-us/azure/role-based-access-control/elevate-access-global-admin)
 
