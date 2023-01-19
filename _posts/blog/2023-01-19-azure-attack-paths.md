@@ -10,8 +10,6 @@ header:
     og_image: "assets/imgs/notes/attackpths.png"
 ---
 
-### Overview
-
 Every object in azure (users, service principle, device, apps) combines to form attack paths that adversaries can find and exploit and take over your whole cloud tenant. It's very difficult for you as a security engineer to manually see these attack paths because of the complex and confusing nature of Azure.  As  John Lambert from MSFT once said Defenders think in lists while Attackers think in Graphs, perhaps the reason why some attackers manage to be one step ahead of the defenders. Defenders rely on lists of configuration and security benchmarks to impose security on cloud infrastructure.
 
 Most of the existing security solutions products produce countless lists of alerts, vulnerabilities, and risky configurations among others that they have obtained from running security checkups on infrastructure resources such as containers, VMs, and applications. This becomes tedious work and also a problem for security defenders as not only do they need to prioritize these countless alerts but also some of them require collaboration with other organization teams such as developers. 
