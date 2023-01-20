@@ -155,11 +155,11 @@ Once the upload is complete, click on the drop-down located on the upper top lef
 
 So let’s start performing a security audit of the subject tenant and will start with the Global Administrator role. A user with this role has access to all administrative features and can control the entire tenant.
 
-From the search, area type and select “global administrator”.  Click on the node that will appear on the screen.
+From the search area, type and select “global administrator”.  Click on the node that will appear on the screen.
 
 ![upload-image]({{ "/assets/imgs/notes/gb.png" | relative_url }})
 
-The left-hand side panel shows information about the selected global admin role. Down in the assignment section, we can see that there are currently 3 active assignments. This basically means that we have 3 objects that have been assigned this to role.
+The left-hand side panel shows information about the selected global admin role. Down in the assignment section, we can see that there are currently 3 active assignments. This basically means that we have 3 objects that have been assigned this role.
 
 Click on the property to see what these objects are.
 
